@@ -18,12 +18,34 @@ func (c *IndexController) BeforeActivation(b mvc.BeforeActivation) {
 	b.Handle("GET", "/okex/otc/sell/btc", "OkexOtcSellBtc")
 	b.Handle("GET", "/okex/btc-usdt", "OkexBtcUsdt")
 	b.Handle("GET", "/test", "Test")
+	b.Handle("GET", "/test2", "Test2")
+	b.Handle("GET", "/test3", "Test3")
+	b.Handle("GET", "/test4", "Test4")
+	b.Handle("GET", "/test5", "Test5")
 
 }
 
 func (c *IndexController) Test() {
 	service.NewOkexService().LoadOkexTest()
 	c.Ctx.JSON("ok")
+}
+func (c *IndexController) Test2() {
+	service.NewOkexService().LoadOkexTest2()
+	c.Ctx.JSON("ok")
+}
+func (c *IndexController) Test3() {
+	res := service.NewOkexService().LoadOkexTest3()
+	c.Ctx.JSON(res)
+}
+func (c *IndexController) Test4() {
+	res := service.NewOkexService().LoadOkexTest4()
+	c.Ctx.JSON(res)
+}
+func (c *IndexController) Test5() {
+	name := c.Ctx.URLParam("name")
+	mode := c.Ctx.URLParam("mode")
+	res := service.NewOkexService().LoadOkexTest5(name, mode)
+	c.Ctx.JSON(res)
 }
 func (c *IndexController) OkexOtcSellBtc() {
 	service.NewOkexService().LoadOkexOTCSellBTC()

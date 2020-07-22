@@ -1,2 +1,2 @@
 # otc-get
-otc搬砖
+otc
